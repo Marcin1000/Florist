@@ -47,14 +47,42 @@ struct WebView: UIViewRepresentable {
     final class Coordinator: NSObject, WKURLSchemeHandler, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate {
         weak var web: WKWebView?
 
-        // Mostek JS: zapis grafik (link download) i kopiowanie przez natywny schowek.
+        // Mostek JS: zapis grafik i CSV (link download) oraz kopiowanie przez natywny schowek.
+        // Obejmuje klikniecia uzytkownika i programowe a.click() - tak samo jak wersja Android.
         static let bridgeJS = """
         (function(){
+          if(window.__dlHook) return; window.__dlHook=1;
           function bridge(msg){ try{ window.webkit.messageHandlers.bridge.postMessage(msg); return true; }catch(e){ return false; } }
+          function save(href, name){
+            if(href.indexOf('data:')===0){ bridge({action:'save', url:href, name:name||'plik'}); return; }
+            // blob: nie istnieje poza WebView, wiec zamieniamy go na data URI przed wyslaniem do Swifta
+            fetch(href).then(function(r){ return r.blob(); }).then(function(b){
+              var fr=new FileReader();
+              fr.onload=function(){ bridge({action:'save', url:fr.result, name:name||'plik'}); };
+              fr.readAsDataURL(b);
+            }).catch(function(){});
+          }
           document.addEventListener('click', function(e){
-            var a = e.target && e.target.closest && e.target.closest('a[download]');
-            if(a && a.getAttribute('href')){ e.preventDefault(); bridge({action:'save', url:a.getAttribute('href'), name:a.getAttribute('download')||'obraz.png'}); }
+            var a = e.target && e.target.closest ? e.target.closest('a[download]') : null;
+            if(!a) return;
+            var href = a.getAttribute('href')||'';
+            if(href.indexOf('data:')!==0 && href.indexOf('blob:')!==0) return;
+            e.preventDefault();
+            save(href, a.getAttribute('download')||'obraz.png');
           }, true);
+          // Eksport CSV tworzy oderwany element <a> i wola a.click(). Takie klikniecie nie
+          // przechodzi przez document, wiec bez podmiany metody nigdy nie trafiloby tutaj.
+          var origClick = HTMLAnchorElement.prototype.click;
+          HTMLAnchorElement.prototype.click = function(){
+            try{
+              var href = this.getAttribute('href')||'';
+              var dl = this.getAttribute('download');
+              if(dl!=null && (href.indexOf('data:')===0 || href.indexOf('blob:')===0)){
+                save(href, dl||'plik'); return;
+              }
+            }catch(e){}
+            return origClick.apply(this, arguments);
+          };
           window.copyText = function(text, ok, fail){
             if(bridge({action:'copy', text:String(text)})){ if(window.toast) window.toast(ok); }
             else if(window.toast){ window.toast(fail); }

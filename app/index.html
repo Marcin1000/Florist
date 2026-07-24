@@ -635,6 +635,12 @@ let lang=(function(){try{return localStorage.getItem('floraklos_lang')||'pl'}cat
 function curLoc(){return lang==='en'?'en-GB':'pl-PL';}
 const I18N={"pl": {"navWycena": "Wycena", "navAi": "Pracownia AI", "navZakupy": "Zakupy", "navHistoria": "Historia", "w_eyebrow": "Kalkulator", "w_h1": "Wyceń bukiet <em>w kilka chwil</em>", "w_p": "Dodaj składniki z cenami zakupu. Marża zostanie doliczona, a cena sprzedaży podpowiedziana.", "b_type": "Rodzaj kompozycji", "b_type_n": "Wpływa na podgląd kompozycji i propozycje w Pracowni AI.", "b_season": "Sezon", "b_season_n": "Ustaw okres, który podnosi koszt kwiatów.", "b_ing": "Składniki kompozycji", "b_ing_n": "Podaj cenę zakupu jednej sztuki. Stuknij preset, aby dodać szybciej.", "h_item": "Składnik", "h_price": "Cena", "h_qty": "Szt.", "h_sum": "Suma", "add_row": "+ Dodaj pozycję", "b_margin": "Marża", "b_margin_n": "Domyślnie 100%, czyli cena zakupu razy dwa. Możesz dostosować.", "round_lbl": "Zaokrąglaj cenę do 5 zł", "b_empty1": "Dodaj kwiaty", "b_empty2": "bukiet ułoży się sam", "fin_paper": "Papier", "fin_ribbon": "Wstążka", "fin_box": "Pojemnik", "s_ing": "Składniki", "s_season": "Sezon", "s_margin": "Marża", "s_stems": "Liczba łodyg", "s_price_lbl": "Cena sprzedaży", "act_save": "Zapisz wycenę", "act_card": "Karta dla klienta", "act_copy": "Kopiuj podsumowanie", "act_clear": "Wyczyść", "ai_eyebrow": "Inspiracja z aparatu lub opisu", "ai_h2": "Pracownia AI", "ai_p": "Wybierz rodzaj kompozycji, a potem zrób zdjęcie rośliny albo opisz pomysł. Rozpoznane rośliny zobaczysz z procentem pewności, ich liczbę dostosujesz i dodasz do wyceny. Na końcu powstaną trzy propozycje.", "ai_what": "Co chcesz stworzyć", "ai_ph_hint": "Zdjęcie rośliny lub bukietu (opcjonalnie)", "ai_cam": "Zrób zdjęcie", "ai_upload": "Wgraj", "ai_describe": "Albo opisz, co chcesz", "ai_ph": "np. romantyczny bukiet z różami i eukaliptusem w pudrowej palecie", "ai_gen": "Wygeneruj propozycje", "ai_identify": "Rozpoznaj roślinę", "det_add": "Dodaj do wyceny", "ai_regen": "Generuj na nowo", "ai_keyline": "Wymaga klucza OpenAI. Powtórne wybory z pamięci nie zużywają limitu. ", "ai_setkey": "Ustaw klucz API", "ai_empty": "Tu pojawią się trzy propozycje bukietów", "ai_load0": "Analizuję zdjęcie...", "ai_hist": "Historia generacji", "ai_hist_clear": "Wyczyść", "h_eyebrow": "Zapisane wyceny", "h_h2": "Historia i zysk", "h_p": "Twoje zapisane wyceny oraz podsumowanie zysku. Wczytaj wycenę, aby wrócić do edycji.", "z_eyebrow": "Hurtownia", "z_h2": "Lista zakupów", "z_p": "Zsumowane ilości składników z zapisanych wycen. Gotowa lista do zamówienia w hurtowni.", "z_include": "Uwzględnij bieżącą wycenę", "card_print": "Drukuj lub zapisz PDF", "card_close": "Zamknij", "footer": "Narzędzie wewnętrzne pracowni. Ceny składników i marża pod kontrolą użytkownika. Klucz OpenAI przechowywany lokalnie w przeglądarce.", "profit": "Zysk", "ph_name": "Nazwa", "a_less": "Mniej", "a_more": "Więcej", "a_del": "Usuń", "c_clear": "Wyczyścić wszystkie pozycje?", "qt_title": "Wycena bukietu", "qt_ing": "Składniki", "qt_season": "Sezon", "qt_margin": "Marża", "qt_price": "Cena sprzedaży", "t_add_first": "Dodaj najpierw pozycje", "t_copied": "Skopiowano", "t_copy_fail": "Nie udało się skopiować", "t_saved": "Wycena zapisana", "t_loaded": "Wczytano wycenę", "t_nodata": "Brak danych", "t_list_copied": "Lista skopiowana", "t_fail": "Nie udało się", "t_csv": "Pobrano CSV", "t_from_mem": "Z pamięci, bez nowego generowania", "t_add_photo": "Dodaj zdjęcie albo opisz pomysł", "t_none_desc": "Nie rozpoznano składników. Opisz pomysł albo dodaj inne zdjęcie.", "t_need_photo": "Najpierw dodaj zdjęcie.", "t_done": "Gotowe", "t_gen_err": "Błąd generowania", "t_restored": "Przywrócono z historii", "t_hist_cleared": "Historia wyczyszczona", "t_key_hard": "Klucz jest wpisany na stałe w pliku", "t_key_saved": "Klucz zapisany", "t_key_removed": "Klucz usunięty", "t_added_suffix": " dodano do wyceny", "p_quote_name": "Nazwa wyceny:", "p_quote_default": "Bukiet", "p_key": "Klucz OpenAI API (zapisywany lokalnie w przeglądarce):", "l_recognize": "Rozpoznaję rośliny...", "l_generate": "Generuję propozycje...", "ai_no_results": "Brak wyników", "ai_failed": "Nie udało się. Sprawdź klucz API i połączenie.", "lbl_from_photo": "ze zdjęcia", "h_empty": "Brak zapisanych wycen.", "h_items": "poz.", "h_load": "Wczytaj", "h_del": "Usuń", "st_month": "Ten miesiąc", "st_quotes": "wycen", "st_sales": "Sprzedaż mies.", "st_profit_m": "Zysk mies.", "st_profit_t": "Zysk łącznie", "z_all": "Wszystkie", "z_month": "Ten miesiąc", "z_week": "Ten tydzień", "z_empty": "Brak danych. Zapisz wyceny albo włącz bieżącą wycenę.", "pcs": "szt.", "z_total_lbl": "Koszt zakupu razem", "z_copy": "Kopiuj listę", "z_csv": "Pobierz CSV", "zt_title": "Lista zakupów", "zt_total": "Razem", "csv_head": "Nazwa;Ilosc;Koszt zakupu (zl)", "csv_total": "Razem", "card_price": "Cena", "card_foot1": "Realizacja do 3 dni roboczych.", "card_foot2": "Cena obejmuje kompozycję i opakowanie.", "mat_fallback": "kwiaty i materiały florystyczne", "dl": "Pobierz", "vision_prompt": "Jesteś botanikiem i florystą. Wypisz każdą roślinę widoczną na zdjęciu: kwiaty cięte, rośliny doniczkowe, zielenie i liście. Dla każdej podaj liczbę sztuk, najbardziej prawdopodobną nazwę rodzajową po polsku oraz pewność rozpoznania w procentach. Odpowiedz wyłącznie listą w formacie \"liczba x nazwa (procent%)\", oddzieloną przecinkami, po polsku, bez zdań i komentarzy. Przykład: \"1 x sansewieria (85%), 3 x roza (90%)\". Nie rozpoznawaj materiałów takich jak papier, wstążka czy taśma. Jeśli na zdjęciu nie ma żadnej rośliny, odpowiedz dokładnie: brak.", "app_title": "Florist", "c_clear_hist": "Wyczyścić historię generacji?", "ok": "OK", "cancel": "Anuluj", "color_lbl": "Kolor", "color_default": "Domyślny", "apply": "Zastosuj", "det_none": "Nie rozpoznano składników na zdjęciu.", "fin_tape": "Taśma", "preset_edit": "Edytuj presety", "preset_done": "Wyjdź", "preset_add_btn": "Dodaj preset", "preset_save": "Zapisz", "preset_updated": "Preset zaktualizowany", "pa_name_ph": "Nazwa presetu", "pa_price_ph": "Cena", "p_add": "Dodaj", "preset_removed": "Preset usunięty", "preset_added": "Preset dodany", "preset_bad": "Podaj nazwę i poprawną cenę", "shape_title": "Wybierz kształt", "shape_auto": "Auto wg nazwy"}, "en": {"navWycena": "Pricing", "navAi": "AI Studio", "navZakupy": "Shopping", "navHistoria": "History", "w_eyebrow": "Calculator", "w_h1": "Price a bouquet <em>in moments</em>", "w_p": "Add ingredients with purchase prices. The margin is added and a selling price suggested.", "b_type": "Arrangement type", "b_type_n": "Affects the preview and the AI Studio proposals.", "b_season": "Season", "b_season_n": "Set a period that raises flower cost.", "b_ing": "Arrangement ingredients", "b_ing_n": "Enter the purchase price per unit. Tap a preset to add faster.", "h_item": "Item", "h_price": "Price", "h_qty": "Qty", "h_sum": "Total", "add_row": "+ Add item", "b_margin": "Margin", "b_margin_n": "Default 100%, i.e. purchase price times two. You can adjust it.", "round_lbl": "Round price to 5 zł", "b_empty1": "Add flowers", "b_empty2": "the bouquet arranges itself", "fin_paper": "Paper", "fin_ribbon": "Ribbon", "fin_box": "Container", "s_ing": "Ingredients", "s_season": "Season", "s_margin": "Margin", "s_stems": "Stem count", "s_price_lbl": "Selling price", "act_save": "Save quote", "act_card": "Client card", "act_copy": "Copy summary", "act_clear": "Clear", "ai_eyebrow": "Inspiration from camera or text", "ai_h2": "AI Studio", "ai_p": "Pick an arrangement type, then take a photo of a plant or describe the idea. Recognized plants appear with a confidence score, you set their counts and add them to the quote. Finally three proposals are created.", "ai_what": "What to create", "ai_ph_hint": "Photo of a plant or bouquet (optional)", "ai_cam": "Take photo", "ai_upload": "Upload", "ai_describe": "Or describe what you want", "ai_ph": "e.g. a romantic bouquet with roses and eucalyptus in a dusty palette", "ai_gen": "Generate proposals", "ai_identify": "Identify plant", "det_add": "Add to quote", "ai_regen": "Regenerate", "ai_keyline": "Requires an OpenAI key. Repeated choices come from memory and don't use the limit. ", "ai_setkey": "Set API key", "ai_empty": "Three bouquet proposals will appear here", "ai_load0": "Analyzing photo...", "ai_hist": "Generation history", "ai_hist_clear": "Clear", "h_eyebrow": "Saved quotes", "h_h2": "History and profit", "h_p": "Your saved quotes and a profit summary. Load a quote to resume editing.", "z_eyebrow": "Wholesale", "z_h2": "Shopping list", "z_p": "Summed ingredient quantities from saved quotes. A ready list to order from the wholesaler.", "z_include": "Include current quote", "card_print": "Print or save PDF", "card_close": "Close", "footer": "Internal studio tool. Ingredient prices and margin under the user's control. The OpenAI key is stored locally in the browser.", "profit": "Profit", "ph_name": "Name", "a_less": "Less", "a_more": "More", "a_del": "Delete", "c_clear": "Clear all items?", "qt_title": "Bouquet quote", "qt_ing": "Ingredients", "qt_season": "Season", "qt_margin": "Margin", "qt_price": "Selling price", "t_add_first": "Add items first", "t_copied": "Copied", "t_copy_fail": "Copy failed", "t_saved": "Quote saved", "t_loaded": "Quote loaded", "t_nodata": "No data", "t_list_copied": "List copied", "t_fail": "Failed", "t_csv": "CSV downloaded", "t_from_mem": "From memory, no new generation", "t_add_photo": "Add a photo or describe the idea", "t_none_desc": "No ingredients recognized. Describe the idea or add another photo.", "t_need_photo": "Add a photo first.", "t_done": "Done", "t_gen_err": "Generation error", "t_restored": "Restored from history", "t_hist_cleared": "History cleared", "t_key_hard": "The key is hard-coded in the file", "t_key_saved": "Key saved", "t_key_removed": "Key removed", "t_added_suffix": " added to the quote", "p_quote_name": "Quote name:", "p_quote_default": "Bouquet", "p_key": "OpenAI API key (stored locally in the browser):", "l_recognize": "Recognizing plants...", "l_generate": "Generating proposals...", "ai_no_results": "No results", "ai_failed": "Failed. Check the API key and connection.", "lbl_from_photo": "from photo", "h_empty": "No saved quotes.", "h_items": "items", "h_load": "Load", "h_del": "Delete", "st_month": "This month", "st_quotes": "quotes", "st_sales": "Sales (mo.)", "st_profit_m": "Profit (mo.)", "st_profit_t": "Total profit", "z_all": "All", "z_month": "This month", "z_week": "This week", "z_empty": "No data. Save quotes or include the current quote.", "pcs": "pcs", "z_total_lbl": "Total purchase cost", "z_copy": "Copy list", "z_csv": "Download CSV", "zt_title": "Shopping list", "zt_total": "Total", "csv_head": "Name;Quantity;Purchase cost (zl)", "csv_total": "Total", "card_price": "Price", "card_foot1": "Ready within 3 business days.", "card_foot2": "Price includes the arrangement and wrapping.", "mat_fallback": "flowers and floristic materials", "dl": "Download", "vision_prompt": "You are a botanist and florist. List every plant visible in the photo: cut flowers, potted plants, greenery and leaves. For each give the piece count, the most likely generic name in English, and the recognition confidence as a percentage. Reply only as a list in the format \"number x name (percent%)\", comma-separated, in English, with no sentences or comments. Example: \"1 x snake plant (85%), 3 x rose (90%)\". Do not recognize materials such as paper, ribbon or tape. If there is no plant in the photo, reply exactly: none.", "app_title": "Florist", "c_clear_hist": "Clear generation history?", "ok": "OK", "cancel": "Cancel", "color_lbl": "Color", "color_default": "Default", "apply": "Apply", "det_none": "No ingredients recognized in the photo.", "fin_tape": "Tape", "preset_edit": "Edit presets", "preset_done": "Exit", "preset_add_btn": "Add preset", "preset_save": "Save", "preset_updated": "Preset updated", "pa_name_ph": "Preset name", "pa_price_ph": "Price", "p_add": "Add", "preset_removed": "Preset removed", "preset_added": "Preset added", "preset_bad": "Enter a name and a valid price", "shape_title": "Choose a shape", "shape_auto": "Auto by name"}};
 function tr(k){const d=I18N[lang]||I18N.pl;return d[k]!=null?d[k]:(I18N.pl[k]!=null?I18N.pl[k]:k);}
+// Kazdy tekst od uzytkownika (nazwy wycen, skladnikow, presetow) i z odpowiedzi modelu
+// musi przejsc przez esc() przed wstawieniem do innerHTML. Bez tego nazwa w rodzaju
+// <img src=x onerror=...> wykonuje sie przy renderowaniu i moze siegnac do localStorage
+// (tam jest klucz OpenAI).
+const ESC_MAP={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>ESC_MAP[c]);}
 const NAMES={"Róża": "Rose", "Piwonia": "Peony", "Tulipan": "Tulip", "Jaskier": "Ranunculus", "Eustoma": "Lisianthus", "Hortensja": "Hydrangea", "Eukaliptus": "Eucalyptus", "Gipsówka": "Baby's breath", "Goździk": "Carnation", "Papier": "Paper", "Wstążka": "Ribbon", "Taśma": "Tape", "Pojemnik": "Container", "Lilia": "Lily", "Gerbera": "Gerbera", "Słonecznik": "Sunflower", "Chryzantema": "Chrysanthemum", "Storczyk": "Orchid", "Anturium": "Anthurium", "Paproć": "Fern", "Ruskus": "Ruscus", "Salal": "Salal", "Trawa ozdobna": "Ornamental grass", "Kokarda": "Bow", "Sznurek": "Twine", "Bilecik": "Gift tag", "Perełki": "Beads", "Gąbka florystyczna": "Floral foam", "Drut florystyczny": "Floral wire", "Tapa": "Floral tape", "Probówka na wodę": "Water tube", "Liść": "Leaf", "Frezja": "Freesia", "Stokrotka": "Daisy", "Jagody": "Berries"};
 const CANON=(function(){const m={};Object.keys(NAMES).forEach(pl=>{m[pl.toLowerCase()]=pl;m[NAMES[pl].toLowerCase()]=pl;});return m;})();
 function canonName(n){if(!n)return n;return CANON[(''+n).trim().toLowerCase()]||n;}
@@ -1054,14 +1060,14 @@ function renderPresets(){
     const items=PRESETS.map((p,i)=>({p,i})).filter(o=>presetCat(o.p)===cat);
     if(!items.length) return;
     html+=`<div class="preset-cat">${catLabel(cat)}</div><div class="preset-row">`+items.map(({p,i})=> presetsEdit
-      ? `<span class="preset rm${presetEditIdx===i?' editing':''}" onclick="editPreset(${i})">${dispName(p[0])}<small>${(Number(p[1])||0).toFixed(2)} zł</small><button class="preset-x" onclick="event.stopPropagation();removePreset(${i})" aria-label="${tr('a_del')}">&times;</button></span>`
-      : `<button class="preset" onclick="addRow('${String(p[0]).replace(/'/g,'')}',${Number(p[1])||0})">${dispName(p[0])}<small>${(Number(p[1])||0).toFixed(2)} zł</small></button>`
+      ? `<span class="preset rm${presetEditIdx===i?' editing':''}" onclick="editPreset(${i})">${esc(dispName(p[0]))}<small>${(Number(p[1])||0).toFixed(2)} zł</small><button class="preset-x" onclick="event.stopPropagation();removePreset(${i})" aria-label="${tr('a_del')}">&times;</button></span>`
+      : `<button class="preset" onclick="addPresetRow(${i})">${esc(dispName(p[0]))}<small>${(Number(p[1])||0).toFixed(2)} zł</small></button>`
     ).join('')+`</div>`;
   });
   box.innerHTML=html;
   const tools=document.getElementById('presetTools');
   if(tools) tools.innerHTML = presetsEdit
-    ? `<div class="preset-edit"><div class="preset-cats">${CATS.map(c=>`<button type="button" class="pcat${presetAddCat===c?' on':''}" onclick="setPresetCat('${c}')">${catLabel(c)}</button>`).join('')}</div><div class="preset-add"><input class="pa-name" id="paName" placeholder="${tr('pa_name_ph')}" value="${presetEditIdx>=0?String(dispName(PRESETS[presetEditIdx][0])).replace(/"/g,'&quot;'):''}"><input class="pa-price" id="paPrice" type="number" min="0" step="0.5" placeholder="${tr('pa_price_ph')}" value="${presetEditIdx>=0?(Number(PRESETS[presetEditIdx][1])||0):''}"><button type="button" class="pa-add" onclick="addPreset()">${presetEditIdx>=0?tr('preset_save'):tr('p_add')}</button></div><button type="button" class="addrow preset-toggle" onclick="togglePresetEdit()" data-i18n="preset_done">${tr('preset_done')}</button></div>`
+    ? `<div class="preset-edit"><div class="preset-cats">${CATS.map(c=>`<button type="button" class="pcat${presetAddCat===c?' on':''}" onclick="setPresetCat('${c}')">${catLabel(c)}</button>`).join('')}</div><div class="preset-add"><input class="pa-name" id="paName" placeholder="${tr('pa_name_ph')}" value="${presetEditIdx>=0?esc(dispName(PRESETS[presetEditIdx][0])):''}"><input class="pa-price" id="paPrice" type="number" min="0" step="0.5" placeholder="${tr('pa_price_ph')}" value="${presetEditIdx>=0?(Number(PRESETS[presetEditIdx][1])||0):''}"><button type="button" class="pa-add" onclick="addPreset()">${presetEditIdx>=0?tr('preset_save'):tr('p_add')}</button></div><button type="button" class="addrow preset-toggle" onclick="togglePresetEdit()" data-i18n="preset_done">${tr('preset_done')}</button></div>`
     : `<button type="button" class="addrow preset-toggle" onclick="togglePresetEdit()" data-i18n="preset_edit">${tr('preset_edit')}</button>`;
 }
 function setPresetCat(c){ presetAddCat=c; renderPresets(); const ne=document.getElementById('paName'); if(ne){ ne.focus(); ne.setSelectionRange(ne.value.length,ne.value.length); } }
@@ -1084,6 +1090,7 @@ function renderSeasons(){
 }
 function setSeason(k){ season=k; renderSeasons(); calc(); }
 function seasonMult(){ return SEASONS[season].mult; }
+function addPresetRow(i){ const p=PRESETS[i]; if(!p)return; addRow(p[0], Number(p[1])||0); }
 function addRow(name='',price='',qty=1){
   rows.push({id:++rowSeq,name,price,qty});
   renderRows(); calc();
@@ -1097,7 +1104,7 @@ function updRowSum(id){ const r=rows.find(x=>x.id===id); const el=document.query
 function renderRows(){
   document.getElementById('rows').innerHTML=rows.map(r=>`
     <div class="row" id="r${r.id}">
-      <div class="nmcell"><button type="button" class="shapebtn" onclick="openShape(${r.id})" aria-label="${tr('shape_title')}">${shapeGlyphSvg(r.shape||canonName(r.name), r.color)}</button><input class="nm" value="${(dispName(r.name)||'').replace(/"/g,'&quot;')}" placeholder="${tr('ph_name')}" oninput="upd(${r.id},'name',this.value)"></div>
+      <div class="nmcell"><button type="button" class="shapebtn" onclick="openShape(${r.id})" aria-label="${tr('shape_title')}">${shapeGlyphSvg(r.shape||canonName(r.name), r.color)}</button><input class="nm" value="${esc(dispName(r.name)||'')}" placeholder="${tr('ph_name')}" oninput="upd(${r.id},'name',this.value)"></div>
       <div class="row-nums">
         <span class="rlbl rlbl-p" data-i18n="h_price">${tr('h_price')}</span>
         <span class="rlbl rlbl-q" data-i18n="h_qty">${tr('h_qty')}</span>
@@ -1190,7 +1197,7 @@ function renderHist(){
   if(!l.length){ box.innerHTML='<div class="hist-empty">'+tr('h_empty')+'</div>'; return; }
   box.innerHTML=l.map(q=>`
     <div class="hist-item">
-      <div><div class="nm">${q.name}</div><div class="meta">${new Date(q.date).toLocaleDateString(curLoc())} &middot; ${q.rows.length} ${tr('h_items')}${q.season&&q.season!=='standard'?' &middot; '+seasonLabel(q.season):''}</div></div>
+      <div><div class="nm">${esc(q.name)}</div><div class="meta">${new Date(q.date).toLocaleDateString(curLoc())} &middot; ${q.rows.length} ${tr('h_items')}${q.season&&q.season!=='standard'?' &middot; '+seasonLabel(q.season):''}</div></div>
       <div class="tot serif">${q.total} zł</div>
       <div style="display:flex;gap:6px"><button class="mini" onclick="recall(${q.id})">${tr('h_load')}</button><button class="mini" onclick="delHist(${q.id})">${tr('h_del')}</button></div>
     </div>`).join('');
@@ -1258,7 +1265,7 @@ function renderZakupy(){
   const total=list.reduce((a,x)=>a+x.cost,0);
   box.innerHTML=list.map(x=>`
     <div class="zak-row">
-      <span class="zn">${dispName(x.name)}</span>
+      <span class="zn">${esc(dispName(x.name))}</span>
       <span class="zq serif">${x.qty} <span style="font-size:12px;color:var(--ink-3)">${tr('pcs')}</span></span>
       <span class="zc">${x.cost.toFixed(2)} zł</span>
     </div>`).join('')
@@ -1320,7 +1327,7 @@ function openCard(){
   const cost=base*seasonMult();
   let price=cost*(1+marza/100); if(roundOn)price=round5(price);
   const items=rows.filter(r=>(r.name||'').trim()).map(r=>
-    `<div class="qc-line"><span>${dispName(r.name)}</span><span class="qcq">${(parseInt(r.qty)||0)} ${tr('pcs')}</span></div>`).join('');
+    `<div class="qc-line"><span>${esc(dispName(r.name))}</span><span class="qcq">${(parseInt(r.qty)||0)} ${tr('pcs')}</span></div>`).join('');
   document.getElementById('quoteCard').innerHTML=`
     <div class="qc-brand"><svg viewBox="0 0 36 36" width="26" height="26" fill="none" style="overflow:visible"><circle cx="18" cy="18" r="16.5" fill="var(--accent-soft)"/><g transform="translate(18 18) scale(0.82) translate(-18 -16.85)"><path d="M18,32 C16.8,25 18.2,16 18,7" stroke="var(--accent-deep)" stroke-width="1.3" stroke-linecap="round"/><g stroke="var(--accent)" stroke-width="1.05" stroke-linecap="round"><g transform="translate(18,7.2)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g><g transform="translate(18,9.5) rotate(-30)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g><g transform="translate(18,9.5) rotate(30)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g><g transform="translate(18,12.7) rotate(-26)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g><g transform="translate(18,12.7) rotate(26)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g><g transform="translate(18,15.9) rotate(-22)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g><g transform="translate(18,15.9) rotate(22)"><path d="M0,0 C 1.5,-1.1 1.9,-3.4 0,-5.4 C -1.9,-3.4 -1.5,-1.1 0,0 Z"/></g></g><g stroke="var(--accent-deep)" stroke-width="1.05" stroke-linecap="round"><g transform="translate(18,24.5) rotate(-46)"><path d="M0,0 C -2.6,-1.4 -2.8,-4.6 0,-7 C 2.8,-4.6 2.6,-1.4 0,0 Z"/></g><g transform="translate(18,25.5) rotate(46)"><path d="M0,0 C -2.6,-1.4 -2.8,-4.6 0,-7 C 2.8,-4.6 2.6,-1.4 0,0 Z"/></g></g></g></svg><span class="m serif">Florist</span></div>
     <div class="qc-title serif">${cardTitle()}</div>
@@ -1391,6 +1398,14 @@ function loadMat(input){
 }
 const aiCache={};
 let aiHistory=[];
+// Klucze cache generowania. Musza opisywac cala tresc promptu, inaczej z pamieci
+// wraca wynik dla innego zdjecia albo dla innych liczb sztuk.
+function strHash(s){ let h=5381; for(let i=0;i<s.length;i++){ h=((h*33)^s.charCodeAt(i))>>>0; } return h.toString(36); }
+function aiKeyDesc(desc){ return 'opis|'+compType+'|'+desc; }
+function aiKeyPhoto(desc, parsed){
+  const sig=(parsed||[]).map(p=>canonName(p.name)+':'+(parseInt(p.count)||0)).join(',');
+  return 'foto|'+compType+'|'+desc+'|'+matDataUri.length+'_'+strHash(matDataUri)+'|'+sig;
+}
 function parseDetected(listText){
   const raw=(listText||'').split(/[,\n]/).map(s=>s.trim()).filter(Boolean).slice(0,14);
   return raw.map(s=>{
@@ -1405,12 +1420,12 @@ function parseDetected(listText){
 }
 function detChipsStatic(parsed){
   if(!parsed||!parsed.length) return '';
-  return '<div class="dstatic">'+parsed.map(p=>`<span class="dchip-static">${p.count} x ${dispName(p.name)}${p.pct!=null?` <span class="dpct">${p.pct}%</span>`:''}</span>`).join('')+'</div>';
+  return '<div class="dstatic">'+parsed.map(p=>`<span class="dchip-static">${parseInt(p.count)||0} x ${esc(dispName(p.name))}${p.pct!=null?` <span class="dpct">${parseInt(p.pct)||0}%</span>`:''}</span>`).join('')+'</div>';
 }
 function renderDetectedUI(){
   const det=document.getElementById('detected'); if(!det) return;
   if(!detectedItems || !detectedItems.length){ det.innerHTML='<div class="ai-empty small">'+tr('det_none')+'</div>'; return; }
-  det.innerHTML='<div class="dlist">'+detectedItems.map((p,i)=>`<div class="drow"><span class="dname">${dispName(p.name)}${p.pct!=null?` <span class="dpct">${p.pct}%</span>`:''}</span><div class="stepper dstep"><button type="button" class="stp stp-minus" onclick="stepDetected(${i},-1)" aria-label="${tr('a_less')}">&minus;</button><span class="dqty">${p.count}</span><button type="button" class="stp stp-plus" onclick="stepDetected(${i},1)" aria-label="${tr('a_more')}">+</button></div><button type="button" class="dadd" onclick="addDetectedItem(${i})" aria-label="${tr('det_add')}">+</button></div>`).join('')+'</div>';
+  det.innerHTML='<div class="dlist">'+detectedItems.map((p,i)=>`<div class="drow"><span class="dname">${esc(dispName(p.name))}${p.pct!=null?` <span class="dpct">${parseInt(p.pct)||0}%</span>`:''}</span><div class="stepper dstep"><button type="button" class="stp stp-minus" onclick="stepDetected(${i},-1)" aria-label="${tr('a_less')}">&minus;</button><span class="dqty">${p.count}</span><button type="button" class="stp stp-plus" onclick="stepDetected(${i},1)" aria-label="${tr('a_more')}">+</button></div><button type="button" class="dadd" onclick="addDetectedItem(${i})" aria-label="${tr('det_add')}">+</button></div>`).join('')+'</div>';
 }
 function stepDetected(i,d){ if(!detectedItems||!detectedItems[i])return; detectedItems[i].count=Math.max(1,(parseInt(detectedItems[i].count)||1)+d); renderDetectedUI(); }
 function addDetectedItem(i){ if(!detectedItems||!detectedItems[i])return; const p=detectedItems[i]; addDetected(p.name, p.count); }
@@ -1447,20 +1462,36 @@ async function generate(force){
   const desc=(document.getElementById('aiDesc').value||'').trim();
   if(!hasPhoto && !desc){ toast(tr('t_add_photo')); return; }
   const prop=document.getElementById('proposals'), det=document.getElementById('detected');
-  const ckey=compType+'|'+desc+'|'+(hasPhoto?('foto'+matDataUri.length):'opis');
-  if(!force && aiCache[ckey]){ det.innerHTML=aiCache[ckey].det; prop.innerHTML=aiCache[ckey].prop; applyI18n(); toast(tr('t_from_mem')); return; }
+  // Sciezka "tylko opis" - wynik zalezy wylacznie od rodzaju kompozycji i tekstu,
+  // wiec klucz mozna sprawdzic od razu.
+  if(!hasPhoto){
+    const dkey=aiKeyDesc(desc);
+    if(!force && aiCache[dkey]){ det.innerHTML=aiCache[dkey].det; prop.innerHTML=aiCache[dkey].prop; applyI18n(); toast(tr('t_from_mem')); return; }
+  }
   if(!getKey()){ setKey(); if(!getKey())return; }
   const load=document.getElementById('aiLoad'), txt=document.getElementById('aiLoadTxt');
   prop.innerHTML=''; det.innerHTML=''; load.classList.add('on'); txt.textContent = hasPhoto?tr('l_recognize'):tr('l_generate');
   try{
     let materials=desc;
+    let ckey=aiKeyDesc(desc);
     if(hasPhoto){
       txt.textContent=tr('l_recognize');
+      // visionDetect zapamietuje wynik dla danego zdjecia (detectedFor), wiec ten krok
+      // nie zuzywa limitu ponownie i zwraca liczby po korektach uzytkownika.
       const parsed=await visionDetect();
       renderDetectedUI();
       const detStr=parsed.map(p=>`${p.count} x ${p.name}`).join(', ');
       materials=[detStr, desc].filter(Boolean).join('. Also: ');
       if(!parsed.length && !desc){ load.classList.remove('on'); toast(tr('t_none_desc')); return; }
+      // Klucz musi opisywac wszystko, co wplywa na prompt: tozsamosc zdjecia oraz
+      // rozpoznane pozycje z aktualnymi liczbami. Sama dlugosc data URI powodowala,
+      // ze po zmianie liczby sztuk wracal stary wynik (i kolidowala dla dwoch roznych
+      // zdjec o tej samej dlugosci).
+      ckey=aiKeyPhoto(desc, parsed);
+      if(!force && aiCache[ckey]){
+        det.innerHTML=aiCache[ckey].det; prop.innerHTML=aiCache[ckey].prop;
+        applyI18n(); toast(tr('t_from_mem')); return;
+      }
     }
     txt.textContent=tr('l_generate');
     const compStr=COMP_TYPES[compType].en;
