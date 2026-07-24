@@ -1,0 +1,50 @@
+{
+  "name": "florist-ai",
+  "productName": "Florist",
+  "version": "1.0.0",
+  "description": "Florist - wycena bukietow i Pracownia AI",
+  "main": "main.js",
+  "author": "Florist",
+  "license": "UNLICENSED",
+  "scripts": {
+    "sync": "node ../../scripts/sync-app.mjs",
+    "prestart": "npm run sync",
+    "start": "electron .",
+    "predist": "npm run sync",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.floristai.app",
+    "productName": "Florist",
+    "files": [
+      "main.js",
+      "app/**/*",
+      "build/icon.ico"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Florist"
+    },
+    "portable": {
+      "artifactName": "FloristAI-portable.exe"
+    }
+  }
+}

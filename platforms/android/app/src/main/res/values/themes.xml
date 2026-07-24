@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FloristAI" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#6F5B8C</item>
+        <item name="android:windowBackground">#F4F2EB</item>
+    </style>
+</resources>

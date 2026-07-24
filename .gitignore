@@ -1,0 +1,17 @@
+# Kopie aplikacji generowane przez scripts/sync-app.mjs - jedyne zrodlo prawdy to app/index.html
+platforms/android/app/src/main/assets/index.html
+platforms/ios/FloristAI/Resources/index.html
+platforms/macos/app/index.html
+platforms/windows/app/index.html
+
+# Zaleznosci i wyniki budowania
+node_modules/
+dist/
+platforms/android/.gradle/
+platforms/android/build/
+platforms/android/app/build/
+platforms/android/local.properties
+platforms/android/.idea/
+platforms/ios/FloristAI.xcodeproj/
+platforms/ios/build/
+.DS_Store
