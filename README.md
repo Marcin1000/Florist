@@ -11,7 +11,7 @@ Internet jest potrzebny tylko dla funkcji AI (klucz OpenAI wpisywany w aplikacji
 ## Struktura
 
 ```
-florist/
+.
   app/index.html            <- JEDYNE zrodlo prawdy: cala aplikacja
   scripts/sync-app.mjs      <- kopiuje app/index.html do otoczek platformowych
   platforms/
@@ -29,22 +29,27 @@ trzymane w gicie.
 
 ## Praca nad aplikacja
 
+```bash
+git clone https://github.com/Marcin1000/Florist.git
+cd Florist
+```
+
 Najszybsza petla: otworz `app/index.html` w przegladarce i odswiezaj (F5).
 Nie trzeba serwera ani instalacji.
 
 ```bash
 # Windows
-start florist\app\index.html
+start app\index.html
 # macOS
-open florist/app/index.html
+open app/index.html
 # Linux
-xdg-open florist/app/index.html
+xdg-open app/index.html
 ```
 
 Po zmianach, przed zbudowaniem paczki na dana platforme:
 
 ```bash
-cd florist
+cd sciezka/do/repo
 node scripts/sync-app.mjs
 ```
 
@@ -66,7 +71,7 @@ przy kazdym budowaniu. iOS ma faze "Sync Florist app", ale **przed pierwszym
 Electron w skrocie:
 
 ```bash
-cd florist/platforms/windows   # albo macos
+cd platforms/windows   # albo macos
 npm install
 npm start                      # podglad
 npm run dist                   # instalator w dist/

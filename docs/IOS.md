@@ -29,7 +29,7 @@ XcodeGen generuje projekt z pliku project.yml, dzieki czemu nie trzeba recznie s
 1. Zainstaluj XcodeGen (jednorazowo):
    brew install xcodegen
 2. Wgraj aktualna aplikacje do Resources (raz przed generowaniem projektu, zeby plik
-   trafil do "Copy Bundle Resources"). W katalogu florist:
+   trafil do "Copy Bundle Resources"). W korzeniu repozytorium:
    node scripts/sync-app.mjs
 3. W katalogu platforms/ios (tam gdzie project.yml) wygeneruj projekt:
    xcodegen generate
@@ -59,7 +59,7 @@ XcodeGen generuje projekt z pliku project.yml, dzieki czemu nie trzeba recznie s
 
 ## Aktualizacja aplikacji (nowy build HTML)
 
-Edytuj florist/app/index.html - to jedyne zrodlo prawdy. Kopia w
+Edytuj app/index.html - to jedyne zrodlo prawdy. Kopia w
 FloristAI/Resources/index.html jest odswiezana przez faze "Sync Florist app"
 przy kazdym budowaniu w Xcode (mozesz tez wywolac recznie: node scripts/sync-app.mjs).
 

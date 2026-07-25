@@ -33,7 +33,7 @@ pliku package.json (pola identity, hardenedRuntime, notarize).
 
 Aktualizacja aplikacji (nowy build HTML)
 Podmien plik:
-   florist/app/index.html (kopia do app/ powstaje automatycznie: npm run sync)
+   app/index.html (kopia do app/ powstaje automatycznie: npm run sync)
 na najnowszy z paczki glownej i zbuduj ponownie.
 
 Struktura

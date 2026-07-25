@@ -4,7 +4,7 @@ FLORIST AI - projekt Android (.apk)
 Co to jest
 ----------
 Natywna nakladka Android (WebView), ktora laduje wersje lawendowa aplikacji
-wbudowana w plik aplikacji (assets/index.html, kopia florist/app/index.html). Calosc
+wbudowana w plik aplikacji (assets/index.html, kopia app/index.html). Calosc
 dziala offline, bez hostingu. Internet jest potrzebny tylko do funkcji AI
 (OpenAI), tak jak w wersji webowej.
 
@@ -19,8 +19,8 @@ Jesli chcesz budowac z linii komend, wygeneruj go raz: gradle wrapper.
 
 Build (krok po kroku)
 ---------------------
-1. Sklonuj repozytorium (folder florist/platforms/android).
-2. Android Studio: File > Open > wskaz folder florist/platforms/android.
+1. Sklonuj repozytorium.
+2. Android Studio: File > Open > wskaz folder platforms/android w klonie.
 3. Poczekaj na Gradle Sync (przy pierwszym otwarciu Studio dociagnie Gradle
    i zaleznosci - potrzebny internet tylko na tym etapie).
 4. Szybki test na telefonie: podlacz telefon (debugowanie USB) i wcisnij Run,
@@ -88,5 +88,5 @@ Zmiana nazwy paczki / wersji
 
 Aktualizacja tresci aplikacji
 -----------------------------
-Edytuj florist/app/index.html. Kopia w assets powstaje automatycznie
+Edytuj app/index.html. Kopia w assets powstaje automatycznie
 przy budowaniu (zadanie Gradle syncFloristApp).

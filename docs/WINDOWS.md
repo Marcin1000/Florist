@@ -22,7 +22,7 @@ Build (krok po kroku, w PowerShell lub CMD)
 -------------------------------------------
 1. Sklonuj repozytorium.
 2. Wejdz do folderu:
-     cd sciezka\do\repo\florist\platforms\windows
+     cd sciezka\do\repo\platforms\windows
 3. Zainstaluj zaleznosci (jednorazowo, potrzebny internet):
      npm install
 4. Zbuduj instalator:
@@ -79,14 +79,14 @@ w pliku HTML, do zrobienia na zyczenie.
 
 Aktualizacja tresci aplikacji
 -----------------------------
-Edytuj florist/app/index.html i zbuduj ponownie - kopia do app/ powstaje
+Edytuj app/index.html i zbuduj ponownie - kopia do app/ powstaje
 automatycznie (npm run dist wywoluje najpierw npm run sync).
 
 ALTERNATYWA BEZ BUDOWANIA (najszybsza, ale lzejsza forma)
 ---------------------------------------------------------
 Jesli nie chcesz instalatora, mozesz "zainstalowac" plik HTML jako aplikacje
 oknową wprost z przegladarki:
-1. Otworz florist/app/index.html w Microsoft Edge.
+1. Otworz app/index.html w Microsoft Edge.
 2. Menu (...) > Aplikacje > Zainstaluj te witryne jako aplikacje
    (lub: ... > Wiecej narzedzi > Utworz skrot > zaznacz "Otworz jako okno").
 3. Powstanie skrot w menu Start otwierajacy aplikacje w osobnym oknie.
