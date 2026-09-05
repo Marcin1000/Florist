@@ -1,46 +1,69 @@
-Florist - wersja macOS (Electron)
+# Florist for macOS (Electron)
 
-Aplikacja desktopowa Florist na macOS. Odpowiednik wersji Windows, to samo zachowanie
-desktop: w Pracowni AI zostaje samo wgrywanie grafiki (bez "Zrob zdjecie"), a wywolania
-OpenAI dzialaja dzieki wylaczonej blokadzie CORS dla strony lokalnej.
+The macOS desktop application. It matches the Windows build and behaves the same way on
+the desktop: AI Studio keeps image upload only (no **Take photo**), and OpenAI calls work
+because CORS is relaxed for the locally loaded page.
 
-Wymagania
-- macOS (build aplikacji mac trzeba wykonac na Macu).
-- Node.js 18 lub nowszy oraz npm.
+## Requirements
 
-Budowanie
-1. W katalogu projektu:
-   npm install
-2. Zbuduj aplikacje:
-   npm run dist
-3. Wynik w katalogu dist/:
-   - Florist-1.0.0-universal.dmg   (instalator)
-   - Florist-1.0.0-universal-mac.zip (aplikacja spakowana)
-   Binarka universal dziala na Apple Silicon (arm64) i Intel (x64).
+- macOS - the mac build has to be produced on a Mac
+- Node.js 18 or newer, and npm
 
-Uruchomienie do testow bez budowania
-   npm install
-   npm start
+## Build
 
-Gatekeeper (aplikacja niepodpisana)
-Aplikacja nie jest podpisana certyfikatem Apple Developer, wiec przy pierwszym
-uruchomieniu macOS moze ja zablokowac. Wtedy:
-- kliknij aplikacje prawym przyciskiem i wybierz "Open", albo
-- usun kwarantanne w Terminalu:
+```bash
+cd path/to/repo/platforms/macos
+npm install
+npm run dist
+```
+
+Results in `dist/`:
+
+- `Florist-1.0.0-universal.dmg` - installer
+- `Florist-1.0.0-universal-mac.zip` - zipped application
+
+The universal binary runs on both Apple Silicon (arm64) and Intel (x64).
+
+To run without building an installer:
+
+```bash
+npm install
+npm start
+```
+
+`npm start` and `npm run dist` refresh the bundled copy of `app/index.html` first, so there
+is no separate sync step.
+
+## Gatekeeper (unsigned application)
+
+The app is not signed with an Apple Developer certificate, so macOS may block it on first
+launch. Either:
+
+- right-click the application and choose **Open**, or
+- clear the quarantine attribute:
+
+  ```bash
   xattr -dr com.apple.quarantine /Applications/Florist.app
-Jesli masz konto Apple Developer, mozesz dodac podpis i notaryzacje w sekcji "mac"
-pliku package.json (pola identity, hardenedRuntime, notarize).
+  ```
 
-Aktualizacja aplikacji (nowy build HTML)
-Podmien plik:
-   app/index.html (kopia do app/ powstaje automatycznie: npm run sync)
-na najnowszy z paczki glownej i zbuduj ponownie.
+With an Apple Developer account you can add signing and notarization in the `mac` section
+of `package.json` (`identity`, `hardenedRuntime`, `notarize`).
 
-Struktura
-- main.js        - proces glowny Electron (okno, is-desktop, CORS, linki zewnetrzne)
-- package.json   - zaleznosci i konfiguracja electron-builder (target mac)
-- app/index.html - aplikacja Florist (jeden plik)
-- build/icon.png - ikona 1024 (electron-builder sam zrobi z niej icns)
+## Updating the app content
 
-Uwaga
-W calym projekcie obowiazuje konwencja: tylko dywizy, bez dlugich myslnikow.
+Edit `app/index.html` in the repository root and rebuild. The copy under
+`platforms/macos/app/` is generated automatically.
+
+## Layout
+
+| Path | Purpose |
+|---|---|
+| `main.js` | Electron main process: window, `is-desktop` flag, CORS, external links |
+| `package.json` | dependencies and the electron-builder configuration for the mac target |
+| `app/index.html` | generated copy of the application - do not edit |
+| `build/icon.png` | 1024 px icon; electron-builder derives the `.icns` from it |
+
+## Alternative: Mac Catalyst
+
+The iOS project can also produce a Mac application through Mac Catalyst - see
+[IOS.md](IOS.md). Electron is the simpler route if you only want a desktop build.

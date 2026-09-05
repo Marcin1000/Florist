@@ -1,95 +1,82 @@
-FLORIST AI - wersja Windows (Electron)
-=======================================
+# Florist for Windows (Electron)
 
-Co to jest
-----------
-Samodzielna aplikacja desktop dla Windows. Wersja lawendowa jest wbudowana
-w aplikacje (app/index.html). Dziala offline, bez hostingu.
-Internet potrzebny tylko do funkcji AI (OpenAI), tak jak w wersji webowej.
+A standalone desktop application. The app file is bundled inside it, so it works offline
+with no hosting. The internet is only needed for the AI features, exactly as in the
+browser version.
 
-Po zbudowaniu dostajesz:
-- instalator NSIS (Florist Setup x.y.z.exe) - klasyczna instalacja ze
-  skrotem na pulpicie i w menu Start,
-- wersje portable (FloristAI-portable.exe) - uruchamiana bez instalacji.
+Building produces two things:
 
-Wymagania do zbudowania
------------------------
-- Windows 10 lub 11.
-- Node.js LTS (https://nodejs.org) - to wszystko, electron-builder dociaga
-  reszte sam.
+- an NSIS installer, `Florist Setup 1.0.0.exe`, with desktop and Start menu shortcuts,
+- a portable build, `FloristAI-portable.exe`, that runs without installing.
 
-Build (krok po kroku, w PowerShell lub CMD)
--------------------------------------------
-1. Sklonuj repozytorium.
-2. Wejdz do folderu:
-     cd sciezka\do\repo\platforms\windows
-3. Zainstaluj zaleznosci (jednorazowo, potrzebny internet):
-     npm install
-4. Zbuduj instalator:
-     npm run dist
-5. Gotowe pliki znajdziesz w podfolderze dist\
-   - "Florist Setup 1.0.0.exe"  -> instalator
-   - "FloristAI-portable.exe"        -> wersja bez instalacji
+## Requirements
 
-Szybki podglad bez budowania instalatora:
-     npm install
-     npm start
-   (uruchamia aplikacje od razu w trybie deweloperskim)
+- Windows 10 or 11
+- [Node.js LTS](https://nodejs.org) - that is all; electron-builder fetches the rest itself
 
-Instalacja
-----------
-Uruchom "Florist Setup 1.0.0.exe". Mozesz wybrac katalog instalacji.
-Powstanie skrot na pulpicie i w menu Start. Aplikacja nie jest podpisana
-cyfrowo, wiec Windows SmartScreen moze pokazac ostrzezenie - wybierz
-"Wiecej informacji" > "Uruchom mimo to". Aby usunac ostrzezenie na stale,
-trzeba kupic certyfikat do podpisu kodu (opcjonalne).
+## Build
 
-Funkcja AI (OpenAI)
--------------------
-- Wymaga klucza OpenAI, wpisywanego w aplikacji (Pracownia AI > Ustaw klucz API).
-- "Wgraj" otwiera zwykly wybor pliku. "Zrob zdjecie" na desktopie zachowa sie
-  jak wybor pliku (brak aparatu na PC).
-- Pobieranie obrazow i eksport CSV zapisuja sie przez okno zapisu Windows.
+```powershell
+cd path\to\repo\platforms\windows
+npm install     # once, needs the internet
+npm run dist
+```
 
-ZAPISYWANIE DANYCH (pamiec) - tak samo jak w wersji web i Android
------------------------------------------------------------------
-Aplikacja uzywa localStorage silnika Chromium (wbudowanego w Electron).
-Dane leza w profilu aplikacji:
-  C:\Users\<Ty>\AppData\Roaming\Florist
+The results land in `dist\`. To run the app without building an installer:
 
-Trwale (przezywaja zamkniecie aplikacji i restart komputera):
-- Historia wycen (zakladka Historia) - klucz "floraklos_wyceny".
-  Czysty tekst: pozycje, ceny, marza, sezon, data. Lekki, bez limitow.
-- Klucz OpenAI - klucz "floraklos_oai".
-- Wybrany jezyk PL/EN - klucz "floraklos_lang".
+```powershell
+npm install
+npm start
+```
 
-Nietrwale (tylko w trakcie sesji, znika po zamknieciu lub odswiezeniu):
-- Historia generacji AI (pasek miniatur w Pracowni AI).
-  Trzymana wylacznie w pamieci, NIE w localStorage. Tak samo dziala wersja
-  web i Android. Powod: kazda generacja to trzy pelne obrazy PNG w base64;
-  zapis kilkunastu takich przekroczylby limit localStorage.
+`npm start` and `npm run dist` both refresh the bundled copy of `app/index.html` first, so
+there is no separate sync step to remember.
 
-Kiedy dane znikaja:
-- Odinstalowanie aplikacji i usuniecie folderu profilu
-  (C:\Users\<Ty>\AppData\Roaming\Florist).
+## Installing
 
-Jesli chcesz, zeby historia generacji tez przezywala restart, trzeba ja
-przeniesc z localStorage na IndexedDB albo zapis do pliku. To osobna zmiana
-w pliku HTML, do zrobienia na zyczenie.
+Run `Florist Setup 1.0.0.exe` and pick an installation directory. The application is not
+code-signed, so SmartScreen may warn on first run - choose **More info** → **Run anyway**.
+Removing that warning permanently requires buying a code signing certificate, which is
+optional.
 
-Aktualizacja tresci aplikacji
------------------------------
-Edytuj app/index.html i zbuduj ponownie - kopia do app/ powstaje
-automatycznie (npm run dist wywoluje najpierw npm run sync).
+## AI features
 
-ALTERNATYWA BEZ BUDOWANIA (najszybsza, ale lzejsza forma)
----------------------------------------------------------
-Jesli nie chcesz instalatora, mozesz "zainstalowac" plik HTML jako aplikacje
-oknową wprost z przegladarki:
-1. Otworz app/index.html w Microsoft Edge.
-2. Menu (...) > Aplikacje > Zainstaluj te witryne jako aplikacje
-   (lub: ... > Wiecej narzedzi > Utworz skrot > zaznacz "Otworz jako okno").
-3. Powstanie skrot w menu Start otwierajacy aplikacje w osobnym oknie.
-Roznica: to cienki skrot do pliku w silniku przegladarki, bez wlasnej ikony
-instalatora i bez pakowania. Dziala offline. Electron daje pelna, samodzielna
-aplikacje z ikona i instalatorem.
+- Require an OpenAI key, entered in the app under **AI Studio → Set API key**.
+- **Upload** opens the standard file picker. **Take photo** behaves as a file picker on
+  desktop, since a PC has no camera in the mobile sense.
+- Downloading generated images and exporting CSV both go through the Windows save dialog.
+
+## Stored data
+
+The app uses the `localStorage` of the Chromium engine bundled with Electron. The profile
+lives in `C:\Users\<you>\AppData\Roaming\Florist`.
+
+Persistent across restarts:
+
+- `floraklos_wyceny` - quote history: items, prices, margin, season, date
+- `floraklos_presets` - ingredient presets
+- `floraklos_oai` - the OpenAI key
+- `floraklos_lang` - selected language
+
+Not persistent: the AI generation history in the AI Studio strip. It is held in memory
+only, because every generation is three full PNG images in base64 and a dozen of those
+would exceed the `localStorage` quota. The browser and Android versions behave the same
+way. See [DEVELOPMENT.md](DEVELOPMENT.md) for the note on moving it to IndexedDB.
+
+Data is lost when the application is uninstalled and the profile folder removed.
+
+## Updating the app content
+
+Edit `app/index.html` in the repository root and rebuild. The copy under
+`platforms/windows/app/` is generated automatically by `npm run dist`.
+
+## Lighter alternative, without building
+
+If you do not need an installer, Edge can pin the file as a windowed app:
+
+1. Open `app/index.html` in Microsoft Edge.
+2. Menu **(...)** → **Apps** → **Install this site as an app**.
+
+This creates a Start menu shortcut that opens the app in its own window, and works
+offline. It is a thin shortcut into the browser engine - no icon of its own, no packaging.
+Electron gives a full standalone application with an installer.
