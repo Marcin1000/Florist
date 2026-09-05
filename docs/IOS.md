@@ -1,88 +1,115 @@
-# Florist - wersja iOS (iPhone / iPad)
+# Florist for iOS (iPhone / iPad)
 
-Natywna otoczka aplikacji Florist na iOS. Wnetrze to ta sama aplikacja jednoplikowa
-(index.html) zaladowana w WKWebView. Odpowiednik wrappera Android.
+The native iOS shell. Inside it is the same single-file application (`index.html`) loaded
+in a WKWebView - the counterpart of the Android wrapper.
 
-## Co dziala
+## What works
 
-- Pelna aplikacja Florist (wycena, Pracownia AI, zakupy, historia) w WKWebView.
-- Aparat i biblioteka zdjec dla pola wyboru zdjecia (natywny picker iOS).
-- Zapis wygenerowanych grafik przez arkusz udostepniania (zapis do Zdjec lub Plikow).
-- Kopiowanie listy i wyceny przez natywny schowek iOS.
-- Trwaly localStorage (presety, jezyk, klucz API, historia) dzieki wlasnemu schematowi
-  URL "appres://" (stabilny origin; file:// w WKWebView bywa zawodny dla localStorage).
-- Czcionki dzialaja offline (sa wbudowane w HTML jako base64).
+- The full application - pricing, AI Studio, shopping, history - in a WKWebView.
+- Camera and photo library for the image picker, through the native iOS picker.
+- Saving generated images through the share sheet, to Photos or Files.
+- Copying the shopping list and the quote through the native clipboard.
+- Durable `localStorage`, thanks to a custom `appres://` URL scheme. It gives the page a
+  stable origin; `file://` in WKWebView is unreliable for `localStorage`.
+- Fonts work offline - they are embedded in the HTML as base64.
 
-Na iOS pozostaje przycisk "Zrob zdjecie" (to urzadzenie mobilne). Wersja desktop bez
-aparatu dotyczy tylko Windows / macOS Electron.
+**Take photo** stays available on iOS, since this is a mobile device. The camera-less
+desktop behaviour applies only to the Windows and macOS Electron builds.
 
-## Wymagania
+## Requirements
 
-- macOS z Xcode 15 lub nowszym.
-- Konto Apple Developer do uruchomienia na fizycznym urzadzeniu (symulator nie wymaga).
+- macOS with Xcode 15 or newer
+- An Apple Developer account to run on a physical device; the simulator does not need one
 
-## Budowanie - sciezka A (zalecana, XcodeGen)
+## Build - route A (recommended, XcodeGen)
 
-XcodeGen generuje projekt z pliku project.yml, dzieki czemu nie trzeba recznie skladac
-.xcodeproj.
+XcodeGen generates the project from `project.yml`, so there is no `.xcodeproj` to assemble
+by hand.
 
-1. Zainstaluj XcodeGen (jednorazowo):
+1. Install XcodeGen, once:
+
+   ```bash
    brew install xcodegen
-2. Wgraj aktualna aplikacje do Resources (raz przed generowaniem projektu, zeby plik
-   trafil do "Copy Bundle Resources"). W korzeniu repozytorium:
+   ```
+
+2. Copy the current application into `Resources`. Do this **before** generating the
+   project, so the file exists when XcodeGen collects sources and lands in *Copy Bundle
+   Resources*. From the repository root:
+
+   ```bash
    node scripts/sync-app.mjs
-3. W katalogu platforms/ios (tam gdzie project.yml) wygeneruj projekt:
+   ```
+
+3. Generate the project, in `platforms/ios` where `project.yml` lives:
+
+   ```bash
    xcodegen generate
-4. Otworz wynikowy projekt:
+   ```
+
+4. Open it:
+
+   ```bash
    open FloristAI.xcodeproj
-5. W zakladce "Signing & Capabilities" wybierz swoj Team (podpis).
-6. Wybierz urzadzenie lub symulator i uruchom (Cmd R).
+   ```
 
-## Budowanie - sciezka B (recznie w Xcode, bez XcodeGen)
+5. In **Signing & Capabilities**, select your Team.
+6. Choose a device or simulator and run (⌘R).
 
-1. Xcode: File > New > Project > iOS > App.
-   - Product Name: FloristAI
+From then on, the `Sync Florist app` build phase refreshes the bundled copy on every
+build.
+
+## Build - route B (by hand in Xcode, without XcodeGen)
+
+1. Xcode: **File → New → Project → iOS → App**
+   - Product Name: `FloristAI`
    - Interface: SwiftUI, Language: Swift
-2. Usun domyslny plik z ContentView (zastapimy go wlasnymi).
-3. Przeciagnij do projektu (z opcja "Copy items if needed", target FloristAI):
-   - FloristAI/FloristApp.swift
-   - FloristAI/WebView.swift
-   - FloristAI/Resources/index.html  (upewnij sie, ze jest w
-     "Copy Bundle Resources" w zakladce Build Phases)
-   - FloristAI/Assets.xcassets  (ikona i kolor akcentu; mozesz tez scalic z istniejacym)
-4. W ustawieniach targetu (Info / Build Settings) dodaj opisy uprawnien:
+2. Delete the default `ContentView` file - it is replaced by the files below.
+3. Drag into the project, with **Copy items if needed** and the `FloristAI` target:
+   - `FloristAI/FloristApp.swift`
+   - `FloristAI/WebView.swift`
+   - `FloristAI/Resources/index.html` - confirm it appears under **Build Phases → Copy
+     Bundle Resources**
+   - `FloristAI/Assets.xcassets` - icon and accent colour; can be merged into an existing
+     catalogue
+4. In the target settings, add the permission descriptions:
    - Privacy - Camera Usage Description
    - Privacy - Photo Library Usage Description
    - Privacy - Photo Library Additions Usage Description
-   (teksty mozesz wziac z project.yml, klucze INFOPLIST_KEY_NS...UsageDescription)
-5. Ustaw Team w "Signing & Capabilities" i uruchom.
 
-## Aktualizacja aplikacji (nowy build HTML)
+   The wording can be taken from `project.yml`, keys `INFOPLIST_KEY_NS...UsageDescription`.
+5. Set your Team in **Signing & Capabilities** and run.
 
-Edytuj app/index.html - to jedyne zrodlo prawdy. Kopia w
-FloristAI/Resources/index.html jest odswiezana przez faze "Sync Florist app"
-przy kazdym budowaniu w Xcode (mozesz tez wywolac recznie: node scripts/sync-app.mjs).
+## Updating the app content
 
-## Struktura
+Edit `app/index.html` in the repository root - that is the only source. The copy at
+`FloristAI/Resources/index.html` is refreshed by the `Sync Florist app` build phase on
+every Xcode build, and can also be refreshed by hand with `node scripts/sync-app.mjs`.
 
-- project.yml                                 - definicja projektu (XcodeGen)
-- FloristAI/FloristApp.swift                  - punkt wejscia (SwiftUI App)
-- FloristAI/WebView.swift                     - WKWebView, schemat appres, mostek zapisu i schowka
-- FloristAI/Resources/index.html - aplikacja Florist (jeden plik)
-- FloristAI/Assets.xcassets                   - ikona aplikacji i kolor akcentu
+## Layout
 
-## macOS
+| Path | Purpose |
+|---|---|
+| `project.yml` | project definition for XcodeGen |
+| `FloristAI/FloristApp.swift` | entry point (SwiftUI App) |
+| `FloristAI/WebView.swift` | WKWebView, the `appres` scheme, the save and clipboard bridge |
+| `FloristAI/Resources/index.html` | generated copy of the application - do not edit |
+| `FloristAI/Assets.xcassets` | app icon and accent colour |
 
-Ten sam kod moze dac aplikacje na Maca dwoma drogami:
-- Mac Catalyst: w ustawieniach targetu wlacz "Mac (Mac Catalyst)". Zwykle dziala bez zmian,
-  arkusz udostepniania i schowek tez. Warto przetestowac picker zdjec.
-- Electron: projekt platforms/macos buduje gotowa aplikacje macOS (dmg lub zip). Wymaga
-  budowania na Macu.
+The JavaScript bridge inside `WebView.swift` is covered by `tests/ios-bridge.test.mjs`.
+Xcode cannot check code that lives in a Swift string literal, and a syntax error there
+disables downloads, sharing and the clipboard silently - so the test extracts it and runs
+it. Run `npm test` after touching that bridge.
 
-Jesli chcesz, przygotuje gotowa konfiguracje pod macOS (Catalyst albo Electron mac) osobno.
+## macOS from the same code
 
-## Uwagi
+Two routes to a Mac application:
 
-- Pierwsze uzycie aparatu lub biblioteki zdjec wywola systemowe pytanie o zgode.
-- Klucz OpenAI jest przechowywany lokalnie w przegladarce (localStorage) na urzadzeniu.
-- W całym projekcie obowiazuje konwencja: tylko dywizy, bez dlugich myslnikow.
+- **Mac Catalyst** - enable **Mac (Mac Catalyst)** in the target settings. It usually works
+  unchanged, share sheet and clipboard included. Test the photo picker.
+- **Electron** - `platforms/macos` already builds a native macOS application (dmg or zip)
+  and is the simpler option. See [MACOS.md](MACOS.md). It has to be built on a Mac.
+
+## Notes
+
+- The first use of the camera or photo library triggers the system permission prompt.
+- The OpenAI key is stored locally in the browser's `localStorage` on the device.
