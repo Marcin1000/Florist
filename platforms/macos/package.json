@@ -5,7 +5,7 @@
   "description": "Florist - wycena bukietow i Pracownia AI",
   "main": "main.js",
   "author": "Florist",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
     "sync": "node ../../scripts/sync-app.mjs",
     "prestart": "npm run sync",
