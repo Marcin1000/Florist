@@ -43,6 +43,15 @@ Other standing rules:
 - Ingredient names have one canonical (Polish) form in `NAMES` / `CANON`; display goes
   through `dispName()`.
 
+## Licensing
+
+The project is under [PolyForm Noncommercial 1.0.0](LICENSE), not an open source licence:
+noncommercial use is free, commercial use needs a licence from the author. Keep the
+`license` field in all three `package.json` files and the lockfile in step with it - when
+that field changes, run `npm install` and commit the regenerated `package-lock.json` in
+the same commit, or CI's clean-tree check fails. Do not add MIT or Apache headers to
+files, and do not relicense anything without the author saying so.
+
 ## Working loop
 
 ```bash

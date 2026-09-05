@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://github.com/Marcin1000/Florist/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Marcin1000/Florist/actions/workflows/ci.yml/badge.svg"></a>
-  <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-8E7AA8">
+  <img alt="License: PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial-8E7AA8">
   <img alt="Platforms" src="https://img.shields.io/badge/platforms-Windows%20%C2%B7%20macOS%20%C2%B7%20Android%20%C2%B7%20iOS-7E8B6C">
   <img alt="Runtime dependencies: none" src="https://img.shields.io/badge/runtime%20dependencies-none-C89A8F">
 </p>
@@ -185,4 +185,14 @@ npm test
 
 ## License
 
-[MIT](LICENSE) © 2026 Marcin Przybylski
+**[PolyForm Noncommercial 1.0.0](LICENSE)** © 2026 Marcin Przybylski
+
+Free to use, study, modify and share for **any noncommercial purpose**: personal use,
+hobby projects, learning, research and teaching, and use by charities, schools, public
+research bodies, health, environmental and government organisations.
+
+**Running a flower business on it is commercial use, and needs a separate licence from
+the author.** So does selling Florist or anything derived from it. That licence is the
+product - if you want one, open an issue on this repository and we will sort it out.
+
+The full terms are short and readable; the summary above is a summary, not the licence.
