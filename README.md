@@ -59,6 +59,37 @@ przy kazdym budowaniu. iOS ma faze "Sync Florist app", ale **przed pierwszym
 `xcodegen generate`** trzeba uruchomic `node scripts/sync-app.mjs` recznie
 (inaczej plik nie trafi do "Copy Bundle Resources").
 
+## Testy
+
+```bash
+npm install     # jednorazowo
+npm test
+```
+
+Testy uruchamiaja aplikacje w Chromium (Playwright) i pilnuja rzeczy, ktore latwo
+zepsuc nie zauwazajac tego:
+
+- **`app.test.mjs`** - aplikacja startuje bez bledow JS, nawigacja po zakladkach,
+  liczenie wyceny z marza, przelacznik PL/EN.
+- **`security.test.mjs`** - nazwy wpisywane przez uzytkownika (wycena, skladnik, preset)
+  i nazwy z odpowiedzi modelu nie moga wykonywac sie jako HTML. Dodajac nowe miejsce,
+  ktore wstawia takie dane do `innerHTML`, przepusc je przez `esc()` - inaczej ten
+  test padnie.
+- **`ai-cache.test.mjs`** - z zaslepiona siecia liczy wywolania API: cache dziala dla
+  niezmienionego zdjecia, ale zmiana liczby sztuk generuje na nowo, a rozpoznawanie
+  nie powtarza sie bez potrzeby.
+- **`ios-bridge.test.mjs`** - wyciaga JavaScript mostka ze `WebView.swift` i uruchamia
+  go na zaslepce `webkit.messageHandlers`. Xcode nie sprawdzi tego kodu, a blad skladni
+  po cichu zabija cala komunikacje z warstwa natywna.
+- **`sync.test.mjs`** - kopie w otoczkach sa identyczne ze zrodlem, sa poza gitem,
+  a kazda otoczka wskazuje na `index.html`.
+
+Jesli lokalnie masz Chromium w innej wersji niz oczekuje Playwright, podaj sciezke:
+`FLORIST_CHROME=/sciezka/do/chrome npm test`.
+
+Wszystko to chodzi w CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) przy kazdym
+pushu i pull requescie, razem z budowaniem debugowego APK.
+
 ## Budowanie aplikacji
 
 | Platforma | Katalog                | Wynik                                  | Instrukcja                    |

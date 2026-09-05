@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Testy aplikacji
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalacja zaleznosci
+        run: npm install --no-audit --no-fund
+
+      - name: Instalacja Chromium dla Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Testy
+        run: npm test
+
+      - name: Kopie w otoczkach zgodne ze zrodlem
+        # sync jest odpalany przez testy; jesli po nim cokolwiek w gicie sie rozjechalo,
+        # znaczy ze wygenerowana kopia zostala zacommitowana zamiast byc ignorowana
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Drzewo robocze nie jest czyste po synchronizacji:"
+            git status --porcelain
+            exit 1
+          fi
+
+  android:
+    name: Build Android (APK debug)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Gradle wrapper
+        # w repo nie ma gradlew ani gradle-wrapper.jar, wiec generujemy go raz przed buildem
+        working-directory: platforms/android
+        run: gradle wrapper --gradle-version 8.7
+
+      - name: Build
+        # zadanie syncFloristApp samo wciaga app/index.html do assets
+        working-directory: platforms/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: florist-apk-debug
+          path: platforms/android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
